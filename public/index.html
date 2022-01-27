@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.ico" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<meta name="description" content="test DApp injection" />
+		<link rel="apple-touch-icon" href="./logo192.png" />
+		<link rel="manifest" href="./manifest.json" />
+		<title>test ethereumProvider DApp injection</title>
+		<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+		<script src="./chimeraProvider.js"></script>
+		<script>
+			window.eth_accounts = ['0x95e6FeeeBDD83a44EB7Ca87F3EEeC4632F4218A5']
+
+			window.ethereum = ChimeraProvider('https://rinkeby.infura.io/v3/')
+			window.web3 = new Web3(window.ethereum)
+			// const initializeChimera = ()=>{
+			//   await ChimeraProvider().enable()
+			// }
+			/*
+			web3.eth.accounts.wallet.add('PRIVATE_KEY')
+
+			*/
+		</script>
+		<style>
+			#root {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#root > div {
+				flex: 1;
+				border: #eee 1px solid;
+				height: 5rem;
+				text-align: center;
+				font-size: 2rem;
+				width: 100%;
+				justify-self: center;
+				align-self: center;
+				line-height: 5rem;
+			}
+			#root > div:nth-child(2n + 1) {
+				background-color: #f0f0f0;
+			}
+		</style>
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+
+		<script type="">
+			var root = document.querySelector('#root')
+			var a = document.createElement('div')
+			a.innerText = 'window.web3 = new Web3(ethereum);'
+			// await	web3.eth.accounts.wallet.add('PRIVATE_KEY')
+			console.log(web3.eth.accounts.wallet)
+			root.appendChild(a)
+
+			a = document.createElement('div')
+			a.innerText = await web3.eth.getBalance('0x95e6FeeeBDD83a44EB7Ca87F3EEeC4632F4218A5');
+			// a.innerText = `await web3.eth.getBalance('0x95e6FeeeBDD83a44EB7Ca87F3EEeC4632F4218A5') = ${await web3.eth.getBalance('0x95e6FeeeBDD83a44EB7Ca87F3EEeC4632F4218A5')}`;
+			root.appendChild(a)
+
+			//window.web3 = new Web3(ethereum);
+			// web3.eth.getBalance()
+			//await web3.eth.getBalance(eth_accounts[0])
+			// a.innerText = `await ethers.provider.listAccounts() = ${await ethers.provider.listAccounts()}`;
+			// var a = document.createElement('div');
+			// a.innerText = `(await ethers.provider.getBalance(accounts[0])).toString() = ${(await ethers.provider.getBalance(accounts[0])).toString()}`;
+			// root.appendChild(a);
+		</script>
+	</body>
+</html>

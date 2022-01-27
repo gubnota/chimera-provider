@@ -1,0 +1,43 @@
+{
+	"name": "chimera-provider",
+	"version": "0.5.0",
+	"description": "Ethereum-provider based package that mimics wallet addon to use with mobile clients or any other media like Safari browser as userscrips instead of MetaMask addon for Chrome browser. Based on ethereum-provider (a standalone EthereumProvider class for connection) and eth-provider packages (for initialization).",
+	"main": "node.js",
+	"scripts": {
+		"build": "webpack --mode production",
+		"test": "standard --fix && mocha test/index.test.js",
+		"test2": "standard --fix && npm run test:web3:v0 && npm run test:web3:v1 && npm run test:endpoints && npm run test:eip1193 && npm run test:frame",
+		"test:web3": "npm run test:web3:v0 && npm run test:web3:latest",
+		"test:web3:v0": "npm install web3@0.20.7 --no-save && mocha test/web3-v0.x.js",
+		"test:web3:v1": "npm install web3@1.2.8 --no-save && mocha test/web3-v1.x.js",
+		"test:web3:latest": "npm install web3@latest --no-save && mocha test/web3-v1.x.js",
+		"test:frame": "npm install web3@1.2.8 --no-save && mocha test/frame.js",
+		"test:endpoints": "mocha test/endpoints.js",
+		"test:eip1193": "mocha test/eip1193.js",
+		"test:ipc": "mocha test/ipc.js",
+		"test:all": "mocha",
+		"prepublishOnly": "npm run test"
+	},
+	"author": "Larry Moore",
+	"license": "GPL-3.0",
+	"devDependencies": {
+		"mocha": "9.1.3",
+		"standard": "16.0.4",
+		"webpack-cli": "^4.9.1"
+	},
+	"dependencies": {
+		"events": "^3.3.0",
+		"oboe": "^2.1.5",
+		"uuid": "^8.3.2",
+		"webpack": "^5.67.0",
+		"ws": "^8.4.2",
+		"xhr2-cookies": "^1.1.0",
+		"@babel/core": "^7.16.10",
+		"babel-loader": "^8.2.3",
+		"stream-browserify": "^3.0.0"
+	},
+	"mocha": {
+		"timeout": 100,
+		"require": "test/hooks.js"
+	}
+}

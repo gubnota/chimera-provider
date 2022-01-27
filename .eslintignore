@@ -1,0 +1,4 @@
+test/*.js
+public/*.js
+connections/*.js
+provider/*.js
